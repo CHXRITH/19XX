@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CHXRITH - 19xx</title>
+	<link href='https://fonts.googleapis.com/css?family=VT323' rel='stylesheet'>
+	<style>
+	
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+::selection {
+	background: #333;
+	color: #eee;
+}
+
+body {
+	font-family: "VT323";
+	color: #333;
+	margin: 0;
+	position: relative;
+	line-height: 1.5em;
+	font-size: 15px;
+	background: repeating-linear-gradient(
+		45deg,
+		#aaa,
+		#aaa 2px,
+		#ccc 2px,
+		#ccc 6px
+	);
+	background-attachment: fixed;
+}
+
+.windoo {
+	display: grid;
+	grid-template-columns: repeat(6, 15.25%);
+	grid-gap: 0 1.67%;
+	margin: 1px auto;
+	margin-top: 50px;
+	padding: 40px;
+	border: 2px solid;
+	width: 1000px;
+	max-width: calc(100% - 40px);
+	background: #ddd;
+	box-shadow: 1px 1px, 2px 2px, 3px 3px, 4px 4px;
+}
+
+.windoo > div {
+	margin-bottom: 20px;
+	padding: 15px;
+	background-color: #f7f7f7;
+	border: 2px solid;
+	grid-column: 1 / 7;
+	box-shadow: inherit;
+}
+
+.windoo > div:hover {
+	background: #fff;
+	color: black;
+}
+
+.windoo > div:last-of-type {
+	margin-bottom: 5px;
+}
+
+.table-wrap {
+	max-width: 100%;
+	overflow-x: auto;
+}
+
+h2 {
+	font-size: 1.5em;
+	line-height: 1.1em;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	margin-top: 0;
+	padding: 5px 10px;
+	margin-bottom: 15px;
+	border-bottom: 2px solid;
+	position: relative;
+}
+
+h2::before,
+h2::after {
+	content: "";
+	position: absolute;
+	bottom: -2px;
+	width: 15px;
+	height: 100%;
+	left: -15px;
+	border: 2px solid;
+	border-left: none;
+	vertical-align: text-bottom;
+}
+
+h2::after {
+	left: unset;
+	right: -15px;
+	border-right: none;
+	border-left: 2px solid;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+th,
+td {
+	border: 2px solid #333;
+	padding: 8px;
+	text-align: left;
+}
+
+tr:hover td {
+	background: #eee;
+}
+
+th {
+	background-color: #666;
+	color: #fff;
+}
+
+ul {
+	list-style-type: none;
+	padding: 0;
+}
+
+li {
+	padding: 5px 0;
+	border-bottom: 2px solid;
+}
+
+.calories div {
+	font-size: 1.25em;
+	line-height: 1.5em;
+	border-bottom: 2px solid;
+	padding: 5px 0;
+}
+
+.profile {
+	text-align: center;
+}
+
+.profile h2 {
+	font-size: 2em;
+	padding-bottom: 10px;
+	border: none;
+}
+
+h3 {
+	font-size: 1em;
+	padding-bottom: 10px;
+	border: none;
+	text-align: center;
+}
+
+
+.profile p {
+	font-size: 1.25em;
+	margin-bottom: 10px;
+}
+
+.windoo .about-wndw li {
+	font-style: italic;
+}
+
+@media (min-width: 767px) {
+	.windoo .schedule-table {
+		grid-column: 1 / 4;
+	}
+	.windoo .exercise-table {
+		grid-column: 4 / 7;
+	}
+	.windoo .calories {
+		grid-column: 1 / 5;
+	}
+	.windoo .personal-bests {
+		grid-column: 5 / 7;
+	}
+	.windoo .contact {
+		grid-column: 1 / 3;
+	}
+	.windoo .about-wndw {
+		grid-column: 3 / 7;
+	}
+	.calories div {
+		width: 33.333%;
+		float: left;
+		display: grid;
+		border-left: 2px solid;
+		padding-left: 10px;
+		margin-left: -2px;
+		border-bottom: none;
+	}
+}
+
+/*Close Button Rules*/
+
+.windoo .profile button {
+	display: none;
+}
+
+.windoo button {
+	appearance: none;
+	border: inherit;
+	color: inherit;
+	font-family: arial;
+	font-size: 24px;
+	line-height: 1.1em;
+	width: 1.2em;
+	height: 1.2em;
+	padding: 0;
+	text-align: center;
+	float: right;
+	z-index: 9;
+	position: relative;
+	background: #eee;
+}
+
+.windoo button:hover {
+	background: #666;
+	border-color: #666;
+	color: white;
+}
+
+@media (min-width: 767px) {
+	.profile + .personal-bests + div,
+	.profile + .exercise-table + div,
+	.schedule-table + div {
+		grid-column: 4 / 7 !important;
+	}
+	.profile + .personal-bests,
+	.profile + .exercise-table {
+		grid-column: 1 / 4;
+	}
+	.profile + div + div + .personal-bests,
+	.profile + .exercise-table + .calories + div {
+		grid-column: 1 / 3;
+	}
+	.profile + div + div + .personal-bests + div,
+	.profile + .exercise-table + .calories + div + div {
+		grid-column: 3 / 5;
+	}
+	.profile + div + div + .personal-bests + div + div,
+	.profile + .exercise-table + .calories + div + div + div {
+		grid-column: 5 / 7;
+	}
+}
+	</style>
+</head>
+<body>
+	<div class="windoo">
+
+		<div class="profile">
+			<h2>Welcome To My Web!</h2>
+			<p>personal web of Charith Pramodya Senanayake</p>
+	
+		</div>
+
+		<div class="contact">
+			<h2>contact</h2>
+			<ul>
+				<li>charith@enywhere.com</li>
+				<li>chari.co.s.lk</li>
+	
+			</ul>
+		</div>
+	
+		<div class="about-wndw">
+			<h2>About Me</h2>
+			<ul>
+				<li>I'm Charith Pramodya Senanayake Also known as "CHXRITH"</li>
+				<li>I'm just a young creator at 17+ years old, born on the 29th of July</li>
+				<li>Programming, Designing makes me Happy!!</li>
+			</ul>
+		</div>
+
+	</div>
+	</br>
+	<h3>copyright @CHXRITH(2006)</h3>
+	<script>
+		function addCloseButtons() {
+    const elements = document.querySelectorAll('.windoo > div');
+
+    elements.forEach(element => {
+        const button = document.createElement('button');
+        button.innerHTML = '×';
+        button.title = 'Close';
+
+        button.style.cursor = 'pointer';
+        button.style.marginRight = '5px';
+
+        button.onclick = function() {
+            element.remove();
+        };
+
+        element.insertBefore(button, element.firstChild);
+    });
+}
+
+addCloseButtons();
+	</script>
+</body>
+</html>
